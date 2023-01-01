@@ -5,6 +5,8 @@ sdk/**/bin/
 **/obj/
 **/node_modules/
 vendor/
+test/
+**/venv/
 **/Pulumi.*.yaml
 **/yarn-error.log
 yarn.lock
