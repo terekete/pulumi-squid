@@ -13,16 +13,10 @@ namespace Pulumi.Squid
     public partial class GCPBucket : Pulumi.ComponentResource
     {
         /// <summary>
-        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-        /// </summary>
-        [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
-
-        /// <summary>
-        /// The name of the bucket
+        /// The bucket resource.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
 
         /// <summary>
@@ -53,13 +47,7 @@ namespace Pulumi.Squid
     public sealed class GCPBucketArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-        /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
-
-        /// <summary>
-        /// The name of the bucket
+        /// Bucket Name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

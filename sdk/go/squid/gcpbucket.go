@@ -14,10 +14,8 @@ import (
 type GCPBucket struct {
 	pulumi.ResourceState
 
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the bucket
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// The bucket resource.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewGCPBucket registers a new resource with the given unique name, arguments, and options.
@@ -27,9 +25,6 @@ func NewGCPBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Location == nil {
-		return nil, errors.New("invalid value for required argument 'Location'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -42,17 +37,13 @@ func NewGCPBucket(ctx *pulumi.Context,
 }
 
 type gcpbucketArgs struct {
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-	Location string `pulumi:"location"`
-	// The name of the bucket
+	// Bucket Name
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a GCPBucket resource.
 type GCPBucketArgs struct {
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-	Location pulumi.StringInput
-	// The name of the bucket
+	// Bucket Name
 	Name pulumi.StringInput
 }
 

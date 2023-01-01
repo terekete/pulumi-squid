@@ -13,33 +13,18 @@ __all__ = ['GCPBucketArgs', 'GCPBucket']
 @pulumi.input_type
 class GCPBucketArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
         The set of arguments for constructing a GCPBucket resource.
-        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-        :param pulumi.Input[str] name: The name of the bucket
+        :param pulumi.Input[str] name: Bucket Name
         """
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        """
-        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the bucket
+        Bucket Name
         """
         return pulumi.get(self, "name")
 
@@ -53,15 +38,13 @@ class GCPBucket(pulumi.ComponentResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a GCPBucket resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-        :param pulumi.Input[str] name: The name of the bucket
+        :param pulumi.Input[str] name: Bucket Name
         """
         ...
     @overload
@@ -86,7 +69,6 @@ class GCPBucket(pulumi.ComponentResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -102,9 +84,6 @@ class GCPBucket(pulumi.ComponentResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GCPBucketArgs.__new__(GCPBucketArgs)
 
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
-            __props__.__dict__["location"] = location
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -117,17 +96,9 @@ class GCPBucket(pulumi.ComponentResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[str]]:
+    def name(self) -> pulumi.Output[str]:
         """
-        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-        """
-        return pulumi.get(self, "location")
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the bucket
+        The bucket resource.
         """
         return pulumi.get(self, "name")
 

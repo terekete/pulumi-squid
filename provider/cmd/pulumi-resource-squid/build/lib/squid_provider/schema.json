@@ -6,30 +6,21 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the bucket",
-                    "willReplaceOnChanges": true
-                },
-                "location": {
-                    "type": "string",
-                    "description": "The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)",
-                    "willReplaceOnChanges": true
+                    "description": "Bucket Name"
                 }
             },
             "requiredInputs": [
-                "name",
-                "location"
+                "name"
             ],
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the bucket"
-                },
-                "location": {
-                    "type": "string",
-                    "description": "The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)"
+                    "description": "The bucket resource."
                 }
             },
-            "required": []
+            "required": [
+                "name"
+            ]
         }
     },
     "language": {
@@ -48,7 +39,7 @@
                 "@pulumi/gcp": "^6.0.0"
             },
             "devDependencies": {
-                "typescript": "^4.7.0"
+                "typescript": "^4.0.0"
             }
         },
         "python": {

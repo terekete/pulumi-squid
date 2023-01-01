@@ -24,28 +24,43 @@ from squid_provider.gcp_bucket import GCPBucket, GCPBucketArgs
 
 class Provider(provider.Provider):
     def __init__(self) -> None:
-        super().__init__(squid_provider.__version__, squid_provider.__schema__)
+        super().__init__(
+            squid_provider.__version__,
+            squid_provider.__schema__
+        )
 
     def construct(
         self,
         name: str,
         resource_type: str,
         inputs: Inputs,
-        options: Optional[ResourceOptions] = None,
+        options: Optional[ResourceOptions] = None
     ) -> ConstructResult:
 
         if resource_type == "squid:index:GCPBucket":
-            return _construct_gcp_bucket(name, inputs, options)
+            return _construct_static_page(
+                name,
+                inputs,
+                options
+            )
 
         raise Exception(f"Unknown resource type {resource_type}")
 
 
-def _construct_gcp_bucket(
-    name: str, inputs: Inputs, options: Optional[ResourceOptions] = None
+def _construct_static_page(
+    name: str,
+    inputs: Inputs,
+    options: Optional[ResourceOptions] = None
 ) -> ConstructResult:
 
-    gcp_bucket = GCPBucket(name, GCPBucketArgs.from_inputs(inputs), options)
+    gcp_bucket = GCPBucket(
+        name,
+        GCPBucketArgs.from_inputs(inputs),
+        dict(inputs),
+        options
+    )
 
     return provider.ConstructResult(
-        urn=gcp_bucket.urn, state={"bucket": gcp_bucket.bucket}
+        urn=gcp_bucket.urn,
+        state={"name": gcp_bucket.name}
     )

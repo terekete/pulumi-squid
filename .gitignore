@@ -1,28 +1,30 @@
-bin/
-VERSION
 .pulumi
-sdk/**/bin/
+**/bin/
 **/obj/
 **/node_modules/
 vendor/
-test/
-dist/
-**/venv/
-**/bin/
 **/Pulumi.*.yaml
 **/yarn-error.log
-yarn.lock
+**/examples/**/**/yarn.lock
 package-lock.json
 .idea/
 **/version.txt
 **/dist
-nuget/
-*.egg-info
+.DS_Store
 __pycache__
 
 ci-scripts/
 *.tar.gz
 
-# This is an artifact only so that we can pass the
-# schema for the provider GetSchema gRPC request
-/provider/cmd/pulumi-resource-*/*/schema.json
+# for goreleaser
+/goreleaser
+/package.json
+/PulumiPlugin.yaml
+
+**/venv
+
+sdk/java/build
+sdk/java/.gradle
+sdk/java/gradle
+sdk/java/gradlew
+sdk/java/gradlew.bat

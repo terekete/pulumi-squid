@@ -20,13 +20,9 @@ export class GCPBucket extends pulumi.ComponentResource {
     }
 
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * The bucket resource.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the bucket
-     */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a GCPBucket resource with the given unique name, arguments, and options.
@@ -39,16 +35,11 @@ export class GCPBucket extends pulumi.ComponentResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
-            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         } else {
-            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -61,11 +52,7 @@ export class GCPBucket extends pulumi.ComponentResource {
  */
 export interface GCPBucketArgs {
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
-     */
-    location: pulumi.Input<string>;
-    /**
-     * The name of the bucket
+     * Bucket Name
      */
     name: pulumi.Input<string>;
 }

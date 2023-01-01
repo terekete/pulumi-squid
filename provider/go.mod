@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz
+module github.com/terekete/pulumi-squid
 
 go 1.17
 
