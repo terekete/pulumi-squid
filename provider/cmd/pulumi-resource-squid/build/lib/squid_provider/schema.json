@@ -1,0 +1,61 @@
+{
+    "name": "squid",
+    "resources": {
+        "squid:index:GCPBucket": {
+            "isComponent": true,
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the bucket",
+                    "willReplaceOnChanges": true
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "name",
+                "location"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the bucket"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)"
+                }
+            },
+            "required": []
+        }
+    },
+    "language": {
+        "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*",
+                "Pulumi.Gcp": "6.*"
+            }
+        },
+        "go": {
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/terekete/pulumi-squid/sdk/go/squid"
+        },
+        "nodejs": {
+            "dependencies": {
+                "@pulumi/gcp": "^6.0.0"
+            },
+            "devDependencies": {
+                "typescript": "^4.7.0"
+            }
+        },
+        "python": {
+            "requires": {
+                "pulumi": ">=3.0.0,<4.0.0",
+                "pulumi-gcp": ">=6.0.0,<7.0.0"
+            }
+        }
+    }
+}
