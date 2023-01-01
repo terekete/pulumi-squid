@@ -6,6 +6,7 @@ sdk/**/bin/
 **/node_modules/
 vendor/
 test/
+dist/
 **/venv/
 **/Pulumi.*.yaml
 **/yarn-error.log
