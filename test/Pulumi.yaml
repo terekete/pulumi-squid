@@ -1,0 +1,15 @@
+name: test-squid
+runtime: yaml
+description: Test YAML
+outputs:
+  # gcp_bucket_name: ${gcp-bucket.url}
+  squid_bucket_name: ${squid-bucket.name}
+resources:
+  # gcp-bucket:
+  #   properties:
+  #     location: US
+  #   type: gcp:storage:Bucket
+  squid-bucket:
+    properties:
+      name: artifact-registry-371104-test-bucket
+    type: squid:index:GCPBucket

@@ -38,7 +38,7 @@ class Provider(provider.Provider):
     ) -> ConstructResult:
 
         if resource_type == "squid:index:GCPBucket":
-            return _construct_static_page(
+            return _construct_gcp_bucket(
                 name,
                 inputs,
                 options
@@ -47,7 +47,7 @@ class Provider(provider.Provider):
         raise Exception(f"Unknown resource type {resource_type}")
 
 
-def _construct_static_page(
+def _construct_gcp_bucket(
     name: str,
     inputs: Inputs,
     options: Optional[ResourceOptions] = None

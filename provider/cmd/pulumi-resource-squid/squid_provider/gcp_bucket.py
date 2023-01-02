@@ -12,7 +12,7 @@ class GCPBucketArgs:
 
     @staticmethod
     def from_inputs(inputs: Inputs) -> 'GCPBucketArgs':
-        return GCPBucketArgs(index_content=inputs['name'])
+        return GCPBucketArgs(name=inputs['name'])
 
     def __init__(
         self,
